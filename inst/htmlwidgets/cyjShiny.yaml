@@ -1,10 +1,21 @@
 dependencies:
 
   - name: cyjShiny
-    version: 1.0.19
-    src: htmlwidgets
-    script:  lib/cytoscape-3.18.2-min.js
+    version: 3.24.0
+    src: htmlwidgets/lib/cytoscape
+    script: dist/cytoscape.umd.js
     stylesheet: ./lib/cyjShiny.css
+
+  - name: cytoscape
+    version: 3.24.0
+    src: htmlwidgets/lib/cytoscape
+    script: dist/cytoscape.umd.js
+    stylesheet: ./lib/cyjShiny.css
+
+  - name: dagre
+    version: 2.5.0
+    src: htmlwidgets/lib/dagre
+    script: cytoscape-dagre.js
 
   - name: klay
     version: 3.1.2

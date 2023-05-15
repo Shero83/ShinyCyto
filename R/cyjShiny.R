@@ -14,7 +14,7 @@
 #' @rdname cyjShiny
 #'
 #' @param graph a graph in json format; converters from graphNEL and data.frame/s offered ("see also" below)
-#' @param layoutName character one of:"preset", "cose", "cola", "circle", "concentric", "breadthfirst", "grid", "random"
+#' @param layoutName character one of:"preset", "cose", "cola", "circle", "concentric", "breadthfirst", "grid", "random", "dagre"
 #' @param styleFile, default NULL, can name a standard javascript cytoscape.js style file
 #' @param width integer  initial width of the widget.
 #' @param height integer initial height of the widget.
@@ -52,7 +52,7 @@
 #'
 #' # output$cyjShiny <- renderCyjShiny(cyjShiny(graph.json.v[123]))
 #' @export
-#' 
+#'
 cyjShiny <- function(graph, layoutName, styleFile = NULL, width = NULL, height = NULL, elementId = NULL) {
   stopifnot(layoutName %in% c(
     "preset",
@@ -66,8 +66,11 @@ cyjShiny <- function(graph, layoutName, styleFile = NULL, width = NULL, height =
     "euler",
     "fcose",
     "springy",
-    "spread"
+    "spread",
+    "dagre"
   ))
+
+  print(layoutName)
 
   defaultStyleFile <- system.file(package = "cyjShiny", "extdata", "defaultStyle.json")
   if (is.null(styleFile)) {
@@ -110,7 +113,7 @@ cyjShiny <- function(graph, layoutName, styleFile = NULL, width = NULL, height =
 #' @rdname cyjShinyOutput
 #'
 #' @export
-#' 
+#'
 cyjShinyOutput <- function(outputId, width = "100%", height = "400") {
   htmlwidgets::shinyWidgetOutput(outputId, "cyjShiny", width, height, package = "cyjShiny")
 }
@@ -153,7 +156,7 @@ renderCyjShiny <- function(expr, env = parent.frame(), quoted = FALSE) {
 #' @rdname loadNetworkFromJSONFile
 #'
 #' @export
-#' 
+#'
 loadNetworkFromJSONFile <- function(filename) {
   jsonText <- readAndStandardizeJSONNetworkFile(filename)
   message <- list(json = jsonText)
@@ -200,7 +203,7 @@ loadStyleFile <- function(styleFile) {
 #' @param padding integer, default 50 pixels.
 #'
 #' @return Nothing
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' fit(session, 100)
@@ -223,7 +226,7 @@ fit <- function(session, padding = 50) {
 #' @param padding integer, default 50 pixels.
 #'
 #' @return Nothing
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' fitSelected(session, 100)
@@ -268,7 +271,7 @@ getSelectedNodes <- function(session) {
 #' @param values a character, logical or numeric vector, the new values.
 #'
 #' @return Nothing
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' setNodeAttributes(session,
@@ -282,7 +285,7 @@ getSelectedNodes <- function(session) {
 #' @rdname setNodeAttributes
 #'
 #' @export
-#' 
+#'
 setNodeAttributes <- function(session, attributeName, nodes, values) {
   session$sendCustomMessage(
     type = "setNodeAttributes",

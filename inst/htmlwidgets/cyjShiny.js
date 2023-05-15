@@ -53,7 +53,7 @@ HTMLWidgets.widget({
                 var style = JSON.parse(x.style.json);
                 if (style == "default style")
                     style = defaultStyle;
-		// cyjshiny_log(data);
+		//cyjshiny_log(data);
 		var cyDiv = el;
 		cyj = cytoscape({
 		    container: cyDiv,

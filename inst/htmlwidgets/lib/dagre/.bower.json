@@ -1,0 +1,36 @@
+{
+  "name": "cytoscape-dagre",
+  "description": "The Dagre layout for DAGs and trees for Cytoscape.js",
+  "main": "cytoscape-dagre.js",
+  "dependencies": {
+    "cytoscape": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cytoscape/cytoscape.js-dagre.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "cytoscape",
+    "cytoscape-extension"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/cytoscape/cytoscape.js-dagre",
+  "version": "2.5.0",
+  "_release": "2.5.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.5.0",
+    "commit": "7685062a8909623b2297f2dafc700a60613206a8"
+  },
+  "_source": "https://github.com/cytoscape/cytoscape.js-dagre.git",
+  "_target": "^2.5.0",
+  "_originalSource": "cytoscape-dagre",
+  "_direct": true
+}
